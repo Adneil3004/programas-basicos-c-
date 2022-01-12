@@ -1,0 +1,216 @@
+----------instalacion de git
+primero se debe instalar el git bahs de comandos 
+
+despues se debe usar los comandos: 
+
+git config --global user.name "AsaelLopez"
+y dar enter y luego tambien se debe añadir un email
+
+git config --global user.email "alopezh2407@hotmail.com"
+y dar enter y con eso ya tendremos puesto nuestro user y nuestro correo para los comits
+
+--- crear repositorio nuevo 
+luego para crear un repositorio es necesario navegar hasta la carpeta que queramos versionar, para ello podemos  dirigirnos
+a la carpeta y dar clic derecho y luego clic en guit bash here y abrira automaticament la pantalla de comandos 
+con la ruta especifica para poder hacer el repositorio
+
+ya que estemos situados en esa ruta se pondra el sig comando que es: 
+
+git init
+
+con el ya tendremos el repositorio creado, t podras dar cuenta si entras a esa carpeta y ves los archivos ocultos 
+ahi estara una carpeta oculta llamada .git 
+
+-- subir el repositorio a github
+
+ya que tenemos el repositorio en git, es hora d pasarlo a git hub para que podamos subir nuestros cambios a la nube 
+para ello debemos entrar a nuestra cuenta de github en el explorador y crear un nuevo repositorio 
+se le pone nombre al repo y una pekeña descripcion
+aqui hay un punto important, si nosotros subimos el repo  de manera gratis se quedara como visible a todos, solo si pagas
+se podra hacer privado el repo, para la prueba se hara publico 
+
+ya que se haya creado hay diferentes opciones para crear el repo
+1 es hacer un repo de cero, sin haber hecho el repo en la compu, para ello se debe ir al git bash de comandos e insertar
+algo asi: 
+echo "# prueba" >> README.md
+git init
+git add .
+git commit -m "first commit"
+git remote add origin https://github.com/AsaelLopez/prueba.git
+git push -u origin master
+
+o si ya tenemos el repo hecho se puede hacer de esta forma: 
+
+git remote add origin https://github.com/AsaelLopez/prueba.git
+git push -u origin master
+en este caso ya se le debio haber dado clic derecho y en git bash sobre la carpeta repositorio ya anteriormente creada
+
+o tambien se puede copiar de otro repo en git hub q es mas facil d hacer
+
+y ya con ello tendremos el repositorio en git hub y se podra compartir dicho vinculo a quien queramos 
+para que pueda versionar el codigo
+
+----------------clonar un repositorio
+
+para ello d la misma forma se debe situar en la carpeta donde se quiera clonar el repositorio como lo hicimos antes
+luego se debe dar los sig comandos 
+
+$ git clone http://github.com/torvalds/ e....
+
+la ruta del repositorio la podemos obtener de github y se la pasamos a quien queramos que realice cambios
+de esta forma le decimos que queremos hacer una copia(check out) del repositorio y se clona el proyecto para despues 
+modificarlo
+
+el clone se puede tardar mucho dependiento del interne y del tamaño del repo 
+
+-----------------------  ocupar comandos para añadir archivos, dar commit  dar update etc
+
+se pueden añadir archivos mediante la consola de esta forma:
+
+primero copiamos los archivos q queramos en la carpera repositorio
+despues q ya esten ahi se deben añadir para que git pueda verlos y para ello debemos situarnos en la carpeta repo
+y luego dar clic derecho en git bash y despues añadir el siguiente comando:
+
+$ git add nombreArchivo.java==  ejemplo
+si keremos añadir todos de sopeton se debe poner & git add .    con esto se añaden todos los documentos
+de esta forma ya lo añadimos pero aun no esta siendo persistido por git, para ello se ocupa 
+
+
+$ git status muestra los archivos que pueden ser añadidos en el siguiente commit 
+-----------------Commits----------------------------
+y el $ git commit lo q hace es confirmar los cambios realizados para subirlos al repositorio
+
+para ello se ocupa el $git commit -m "comentario"    se debe agregar un comentario para saber q se esta subiendo y por q 
+
+tambien se pueden eliminar archivos para ello se ocupa el sig comando
+
+git rm NombreArchivo
+
+y si le damos al status ahi nos dira q se elimino un archivo,  osea q en el siguiente commit se vera reflejado y confirmado
+el cambio
+
+-----------------push---------------
+se debe hacer el push para subir los commits al repositorio remoto y los demas programadores vean nuestros cambios
+para ello despues de hacer los commits se debe dar el comando
+git push 
+y con ello se podra subir al remoto y los demas podran dar los cambios realizados por mi
+
+-------------pull---------------------
+es para poder ver los cambios q los demas hicieron, es como dar un update
+para ello es usar 
+
+git pull 
+y con ello podremos ver los cambios q los demas hicieron y poder descargarlos
+----------------fetch------------
+es para poder ver los cambios q se han realizado pero sin combinarlos con tu repo local
+osea q solo ves los cambios pero sin hacer merge, solo es para verlos como en otra rama espejo
+
+para ello escre dar el comando
+git fetch
+
+casi siempre es mejor dar fetch para ver los commits y luego dar pull para ya guardar los cambios en local
+
+
+-----------------BRANCH-------------------------------------------
+
+se ocupa para crear nuevas ramas apartir d un repo, es como crear otra repo para no afectar a la otra repo orignial
+de esta forma cada persona puede trabjar en una branch y con ello eliminar dificultades 
+
+para ello se debe conocer algunas cosas,   la rama original el repo orinigal etc  se identifica como master y cuando creamos
+una branch nueva debemos ponerle otro nombre para diferenciarla la cual sera la rama secundaria 
+
+para crear una rama nueva se debe escribir el comando
+
+$git branch nombreDeRama
+
+con ello se creara la rama, si deseamos ver que ramas existen en el repo nos situamos en el repo y escribimos
+$ git branch   y con ello se veran cuantas ramas existen actualmente y nos marcara en cual rama se esta 
+trabajando actualmente.
+
+para poder cambiar de rama se debe dar un checkout el cual nos cambiara de branch d esta forma
+
+$git checkout nombreDeBranchQdeseamosUsar
+
+y para borrar una branch solo es necesario hacer lo siguiente
+
+$git branch -b nombreDeBranch
+
+Para subir una rama t situas en la rama y luego  el sig comando
+$git push origin <branch>
+
+--------------------------------MERGE Fusion de ramas------------------------
+
+se trata de hacer juntar 2 ramas   ejem  ramaA con ramaB  y unirlas en una sola  ramaAB  
+hay q decir q esto puede generar conflictos 
+
+para hacer el merge  o fusion de ramas  primero debemos colocarnos en la rama que deseamos sea la principal o de destino
+con el comando chekout como vimos antes  y ahora q estamos situados por ejemplo en la rama master debemos introducir
+el siguiente comando para poder hacer la fusion de las ramas
+
+$ git merge NombredeRamaQueDeseofusionarconMaster
+
+y si todo salio bien sin conflictos  ya tendremos las 2 ramas en una sola, y d esta forma podemos incluso eliminar la rama
+gq se fusiono anteriormente sin que existan problemas, esto se hace cuando el merge fue exitoso y sin complicaciones
+
+
+pero aveces no siempre es asi es por ello q seria mejor conservar la rama, esto ocurre mucho cuando modificamos una misma
+linea de codigo q alguien mas modifico, y por ello al hacer merge  git detecta q alguien realizo un cambio en cierta parte
+y es necesario saber q cambio es el bueno, realizar el cambio,  darle add al archivo y luego darle commit,  y por ultimo
+dar el merge para unir las ramas 
+
+----------------------revisar commits-------------------------
+
+para revisar un commit solo con dar checkout y luego dar el numero de commit q desamos revisar
+
+de esta forma estaremos situandonos en el tiempo de ese commit y a partir d ahi podemos crear una nueva rama si nosotros deseamos regresar
+en limpio desde ese commit,  por si por ejem desd ese commit ya no servia bien la app y por ello se crea una rama desd entonces
+
+para la rama pues ya stamos situados en el commit de ese entonces, luego capturar el comando
+
+$git branch NombreBranchCommit  y luego dar  
+
+$ git checkout NombreBranchCommit    para situarnos en la branch de ese commit 
+
+------------------------ tags o atajos para commits o apodos------------------
+
+se puede colocar un apodo a un commit para que lo podamos encontrar mas facilmente sin apuntar toda la clave del commit
+
+para ello primero necesitamos ver los commits q hay y para ello usamos 
+
+$ git log --oneline 
+ y con ello se veran todos los commits con sus claves para no perdernos 
+luego para ponerle el apodo hacemos : 
+
+$ git tag Apodo claveCommit
+y con ello ya tendremos etiquetado el commit con el apodo
+
+y asi tambien podemos hacer checkout a esos tags para mayor facilidad y no andar buscando los commits
+
+si damos   $ git tag    podemos ver una lista de todos los tags 
+
+
+
+---------------------Notas-----------------------
+git commit  cuando se da un commit  se queda guardado en tu repositorio LOCAL  es decir en el repo de tus carpetas de 
+tu compu,  pero no se modifico el repositorio remoto q esta en la nube en github,   es decir solo se hizo el cambio en git
+pero no en github
+git push  cuando das un push es por que ya tienes uno o varios commits q guardast en el repo local y q ahora ya vas a subir
+a la nube  para que los demas usuarios conectados puedan ver los cambios q tu hicist en el momento en q ellos le den 
+git pull
+
+git pull  es para descargar los cambios realizados por los usuarios q actualizaron el repo remotamente
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
